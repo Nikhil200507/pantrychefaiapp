@@ -54,6 +54,7 @@ export default function PantryManager({
           <div className="flex items-center gap-2 mt-2">
             <Input
               id="ingredient-input"
+              type="text"
               value={newIngredient}
               onChange={(e) => setNewIngredient(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
