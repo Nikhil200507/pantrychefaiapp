@@ -25,7 +25,7 @@ const RecipeCard = ({ name, onSelect }: { name: string; onSelect: (name: string)
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-300 group-hover:scale-105"
-          data-ai-hint="food recipe"
+          data-ai-hint="food"
         />
       </div>
     </CardHeader>
@@ -52,7 +52,7 @@ const FavoriteRecipeCard = ({ recipe, onSelect }: { recipe: Recipe; onSelect: (n
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover transition-transform duration-300 group-hover:scale-105"
-            data-ai-hint="food recipe"
+            data-ai-hint="food"
           />
         </div>
       </CardHeader>
