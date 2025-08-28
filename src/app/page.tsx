@@ -21,12 +21,15 @@ export default function Home() {
   
   const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
   const [isLoadingDetails, setIsLoadingDetails] = useState(false);
+  const [newIngredient, setNewIngredient] = useState('');
 
   const { toast } = useToast();
 
-  const handleAddIngredient = (ingredient: string) => {
-    if (ingredient && !ingredients.includes(ingredient)) {
-      setIngredients([...ingredients, ingredient]);
+  const handleAddIngredient = () => {
+    const ingredientToAdd = newIngredient.trim();
+    if (ingredientToAdd && !ingredients.includes(ingredientToAdd)) {
+      setIngredients([...ingredients, ingredientToAdd]);
+      setNewIngredient('');
     }
   };
 
@@ -113,6 +116,8 @@ export default function Home() {
           <div className="lg:col-span-1 xl:col-span-1">
             <PantryManager
               ingredients={ingredients}
+              newIngredient={newIngredient}
+              onNewIngredientChange={setNewIngredient}
               onAddIngredient={handleAddIngredient}
               onRemoveIngredient={handleRemoveIngredient}
               dietaryRestrictions={dietaryRestrictions}

@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,7 +10,9 @@ import { Label } from '@/components/ui/label';
 
 type PantryManagerProps = {
   ingredients: string[];
-  onAddIngredient: (ingredient: string) => void;
+  newIngredient: string;
+  onNewIngredientChange: (value: string) => void;
+  onAddIngredient: () => void;
   onRemoveIngredient: (ingredient: string) => void;
   dietaryRestrictions: string[];
   onToggleDietaryRestriction: (restriction: string) => void;
@@ -27,6 +28,8 @@ const dietaryOptions = [
 
 export default function PantryManager({
   ingredients,
+  newIngredient,
+  onNewIngredientChange,
   onAddIngredient,
   onRemoveIngredient,
   dietaryRestrictions,
@@ -34,15 +37,6 @@ export default function PantryManager({
   onGenerate,
   isLoading,
 }: PantryManagerProps) {
-  const [newIngredient, setNewIngredient] = useState('');
-
-  const handleAdd = () => {
-    if (newIngredient.trim()) {
-      onAddIngredient(newIngredient.trim());
-      setNewIngredient('');
-    }
-  };
-
   return (
     <Card className="sticky top-8">
       <CardHeader>
@@ -57,11 +51,11 @@ export default function PantryManager({
                 id="ingredient-input"
                 type="text"
                 value={newIngredient}
-                onChange={(e) => setNewIngredient(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
+                onChange={(e) => onNewIngredientChange(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && onAddIngredient()}
                 placeholder="e.g., Chicken"
               />
-              <Button size="icon" onClick={handleAdd} aria-label="Add Ingredient">
+              <Button size="icon" onClick={onAddIngredient} aria-label="Add Ingredient">
                 <Plus className="h-4 w-4" />
               </Button>
             </div>
