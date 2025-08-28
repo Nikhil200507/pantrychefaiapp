@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useCallback } from 'react';
@@ -70,7 +71,7 @@ export default function Home() {
     }
   }, [ingredients, dietaryRestrictions, toast]);
 
-  const handleSelectRecipe = useCallback(async (recipeName: string) => {
+    const handleSelectRecipe = useCallback(async (recipeName: string) => {
     const existingFavorite = favoriteRecipes.find(r => r.name === recipeName);
     if(existingFavorite) {
       setSelectedRecipe(existingFavorite);
